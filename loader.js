@@ -81,7 +81,7 @@
             end:        addHours(start, ev.duration),
             title:      ev.title,
             type:       ev.event_type || 'open',
-            sub:        null,
+            sub:        ev.sub || null,
             activityId: ev.catalogRef || null
           };
         });
@@ -121,7 +121,9 @@
         if (!activity.wish.includes(userId)) activity.wish.push(userId);
       } else if (pick.state === 'committing') {
         if (!activity.commit.includes(userId)) activity.commit.push(userId);
+      } else if (pick.state === 'both') {
         if (!activity.wish.includes(userId)) activity.wish.push(userId);
+        if (!activity.commit.includes(userId)) activity.commit.push(userId);
       }
     });
   }
@@ -188,6 +190,12 @@
       // Populate globals before Supabase (pick hydration mutates BD_ACTIVITIES)
       window.BD_ACTIVITIES = buildActivities(actData.attractions);
       window.BD_SCHEDULE   = buildSchedule(schedData.events);
+      window.BD_SCHEDULED_IDS = new Set(
+        (window.BD_SCHEDULE || []).flatMap(function(day) { return day.events; })
+          .filter(function(ev) { return ev.activityId && ev.type !== 'meal' && ev.type !== 'travel'; })
+          .map(function(ev) { return ev.activityId; })
+      );
+      console.log('[loader] BD_SCHEDULED_IDS:', [...window.BD_SCHEDULED_IDS]);
       window.BD_PEOPLE     = buildPeople(peopleData.attendees);
       window.BD_INITIAL_USER = null;
 
