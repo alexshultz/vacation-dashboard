@@ -1554,6 +1554,30 @@
       "visible": true
     },
     {
+      "slug": "bluff-dwellers-cave",
+      "name": "Bluff Dweller's Cave",
+      "description": "A guided show cave tucked into the scenic Elk River valley near Noel, Missouri, in the four-states corner area. Named for the ancient peoples who sheltered in these Ozark bluffs long before European settlement. Underground limestone formations with stalactites and stalagmites. On-site lodging available if you want to turn this into an overnight stop. Open daily Mar-Oct 10am-6pm, Nov-Feb (Thu-Mon) 10am-5pm.",
+      "tags": [
+        "nature",
+        "educational",
+        "family",
+        "indoor",
+        "1-2hr",
+        "day-trip",
+        "cave",
+        "history"
+      ],
+      "price_adult": 28.0,
+      "rating": 4.3,
+      "official_url": "https://bluffdwellerscave.com",
+      "address": "163 MO-76, Noel, MO 64854",
+      "drive": "2 hr 29 min",
+      "distance_miles": 67,
+      "image": "assets/thumbs/bluff-dwellers-cave-thumb.jpg",
+      "visible": true,
+      "sort_key": "bluff dweller's cave"
+    },
+    {
       "slug": "bohemian-queen",
       "name": "Bohemian Queen",
       "category": "show",
@@ -2792,6 +2816,30 @@
       "drive": "1h 43min",
       "sort_key": "buffalo outdoor center",
       "visible": true
+    },
+    {
+      "slug": "bull-shoals-caverns",
+      "name": "Bull Shoals Caverns",
+      "description": "One of the oldest limestone caverns in the Ozarks, formed approximately 350 million years ago. Guided tours along lit concrete walkways showcase almost every cave formation found in the US -- stalactites, stalagmites, flowstone, columns, and an underground waterfall at the deepest point. Part of Mountain Village 1890, a recreated 19th-century Ozark settlement with authentic historic buildings you can explore before or after the cave. 59 degrees year-round. Open Wed-Sun (spring-fall), Fri-Sun (winter).",
+      "tags": [
+        "nature",
+        "educational",
+        "family",
+        "indoor",
+        "1-2hr",
+        "day-trip",
+        "cave",
+        "history"
+      ],
+      "price_adult": 20.95,
+      "rating": 4.5,
+      "official_url": "https://bullshoalscaverns.com",
+      "address": "5765 Central Blvd, Bull Shoals, AR 72619",
+      "drive": "2 hr 4 min",
+      "distance_miles": 88,
+      "image": "assets/thumbs/bull-shoals-caverns-thumb.jpg",
+      "visible": true,
+      "sort_key": "bull shoals caverns"
     },
     {
       "slug": "butterfly-palace-rainforest-adventure",
@@ -11822,6 +11870,32 @@
       "drive": "2h 24min",
       "sort_key": "walton arts center (dickson st)",
       "visible": false
+    },
+    {
+      "slug": "war-eagle-cavern",
+      "name": "War Eagle Cavern",
+      "description": "Arkansas's largest natural cavern entrance on the shores of Beaver Lake. One-hour guided walking tours through living caverns on wide, smooth accessible paths (stroller and wheelchair friendly). Beyond the cave: pan for real rubies, emeralds, and sapphires at the water sluice; navigate the Lost in the Woods maze; defy gravity in the Moonshiners Mystery Shack; and feed the fish at the lakeside dock. You can even arrive by boat -- it's the only lakeside cavern entrance in Arkansas. Open daily 10am-4pm, no reservations required.",
+      "tags": [
+        "nature",
+        "educational",
+        "family",
+        "outdoor",
+        "active",
+        "1-2hr",
+        "day-trip",
+        "cave",
+        "gem-panning",
+        "kids"
+      ],
+      "price_adult": 24.0,
+      "rating": 4.7,
+      "official_url": "https://wareaglecavern.com",
+      "address": "21494 AR-187, Rogers, AR 72756",
+      "drive": "2 hr 10 min",
+      "distance_miles": 71,
+      "image": "assets/thumbs/war-eagle-cavern-thumb.jpg",
+      "visible": true,
+      "sort_key": "war eagle cavern"
     },
     {
       "slug": "war-eagle-mill",
