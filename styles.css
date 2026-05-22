@@ -92,7 +92,7 @@ body {
    bare wrapper (used in Home rows, Timeline, etc) needs flex. */
 .avatars { display: flex; align-items: center; }
 
-/* ─── Activity Detail Modal (Apple-style sheet) ──────────────────── */
+/* ─── Activity Detail Modal (Apple Photos-style sheet) ─────────────── */
 .dm-backdrop {
   position: fixed; inset: 0; z-index: 200;
   background: rgba(20, 26, 18, 0.5);
@@ -112,9 +112,16 @@ body {
   position: relative;
   width: 100%;
   max-width: 640px;
-  max-height: 92vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  height: 85vh;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Touch-action per child: pan-y everywhere lets the browser scroll
+     long content vertically while Swiper intercepts horizontal swipes. */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
   overscroll-behavior: contain;
   background: var(--color-surface);
   color: var(--color-ink);
@@ -122,11 +129,12 @@ body {
   box-shadow: 0 -8px 40px rgba(0,0,0,0.25);
   animation: dm-slide-up 380ms cubic-bezier(0.2, 0.9, 0.25, 1.05);
   transform-origin: bottom center;
-  touch-action: pan-y;
 }
+/* The intro animation runs once on mount; never toggle it during nav. */
 @media (min-width: 640px) {
   .dm-sheet {
     border-radius: 18px;
+    height: 88vh;
     max-height: 88vh;
     box-shadow: var(--shadow-2);
     animation: dm-pop 240ms var(--ease-out);
@@ -140,7 +148,52 @@ body {
   0%   { transform: translateY(20px) scale(0.96); opacity: 0; }
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
-.dm-sheet.is-dragging { transition: none; animation: none; }
+/* The sheet intro animation runs once on mount. Don't toggle it on/off
+   during navigation — toggling `animation` restarts the slide-up which
+   reads as a "dip" when a card snaps into place. */
+
+/* ── Modal pager — Swiper.js virtual carousel (renderExternal) ──────
+   .dm-pager clips; Swiper owns the swiper-wrapper transform.
+   React always renders exactly 3 .dm-pane slots, absolutely positioned
+   at idx * slideWidth inside the wrapper. */
+.dm-pager {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Swiper container and wrapper must fill the full pager height.
+   position:relative on wrapper is required for absolutely-positioned panes. */
+.dm-pager .swiper {
+  height: 100%;
+}
+.dm-pager .swiper-wrapper {
+  height: 100%;
+  position: relative;
+}
+
+.dm-pane {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.dm-pane-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dm-backdrop, .dm-sheet { animation: none; }
 }
@@ -149,6 +202,11 @@ body {
   width: 40px; height: 4px; border-radius: 2px;
   background: var(--color-line);
   margin: 8px auto 0;
+  flex-shrink: 0;
+  /* The handle is a small pull-to-dismiss target; horizontal touches
+     still belong to the native pager. */
+  touch-action: pan-x;
+  pointer-events: auto;
 }
 @media (min-width: 640px) { .dm-handle { display: none; } }
 
@@ -163,6 +221,8 @@ body {
   font-family: var(--font-display); font-weight: 700; font-size: 14px;
   display: grid; place-items: center;
   z-index: 2;
+  /* Always tappable; no gesture interference. */
+  touch-action: manipulation;
 }
 .dm-close-x:hover { background: var(--color-bg); }
 
@@ -170,8 +230,11 @@ body {
   width: 100%; aspect-ratio: 16/9;
   background: var(--color-bg);
   overflow: hidden;
+  flex-shrink: 0;
+  /* pan-y: browser handles vertical scroll, Swiper handles horizontal swipe */
+  touch-action: pan-y;
 }
-.dm-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dm-hero img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
 
 .dm-body { padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 12px; }
 .dm-title {
