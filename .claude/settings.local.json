@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Volumes/alex/vaults/Vacation/Branson 2026/**)",
+      "Read(//Users/alex/vaults/Vacation/Branson 2026/**)",
+      "Read(//Volumes/**)",
+      "Bash(unzip -l \"Branson _26 Design System-trending-handoff.zip\")",
+      "Bash(unzip -l \"Branson _26 Design System.zip\")",
+      "Bash(rm -rf /tmp/branson-handoff)",
+      "Bash(mkdir -p /tmp/branson-handoff)",
+      "Bash(unzip -q \"Branson _26 Design System-trending-handoff.zip\" -d /tmp/branson-handoff)",
+      "Read(//tmp/**)",
+      "Bash(xargs kill)",
+      "Bash(rmdir \"/Users/alex/code/vacation-dashboard-dev/.claude\")",
+      "Bash(bash scripts/deploy.sh staging \"Trending tab on Activities \\(Heating up / On the bubble / Locked in\\) + responsive 3-tab toggle; May 23 supper menu\")",
+      "Bash(curl -s \"https://vacation-dev.creeperbomb.com/Activities.jsx?nocache=$\\(date +%s\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://vacation-dev.creeperbomb.com/\")",
+      "Bash(curl -s \"https://vacation-dev.creeperbomb.com/schedule.json?nocache=$\\(date +%s\\)\")"
+    ]
+  }
+}
